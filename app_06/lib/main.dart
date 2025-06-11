@@ -1,4 +1,5 @@
-import 'package:app_06/screens/ejercicio1Screen.dart';
+import 'package:app_06/screens/ejercicio00N10Screen.dart';
+import 'package:app_06/screens/ejercicio00N1Screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,18 +30,37 @@ class Cuerpo extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(children: [btnEjercicio1(context)]),
+      //BOTONES EJERCICIOS
+      body: Padding(
+        padding: EdgeInsets.all(1.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            btnEjercicio00N1(context),
+            btnEjercicio00N2(context),
+          ],),)
     );
   }
 
-  Widget btnEjercicio1(context) {
+  Widget btnEjercicio00N1(context) {
     return (FilledButton.tonal(
       onPressed:
           () => Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => Ejercicio1()),
           ),
-      child: Text("Ejercicio 1"),
+      child: Text("Ejercicio 00 - N1"),
+    ));
+  }
+
+  Widget btnEjercicio00N2(context) {
+    return (FilledButton.tonal(
+      onPressed:
+          () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Ejercicio10()),
+          ),
+      child: Text("Ejercicio 00 - N10"),
     ));
   }
 }

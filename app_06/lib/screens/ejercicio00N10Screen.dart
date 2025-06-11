@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 // mayor o igual a 8, el programa imprimirá "El estudiante es apto para participar en el
 // programa de intercambio". En caso contrario, imprimirá "Lo siento, el estudiante no
 // cumple con los requisitos para el programa de intercambio".
-class Ejercicio1 extends StatefulWidget {
-  const Ejercicio1({super.key});
+class Ejercicio10 extends StatefulWidget {
+  const Ejercicio10({super.key});
 
   @override
-  State<Ejercicio1> createState() => _Ejercicio1State();
+  State<Ejercicio10> createState() => _Ejercicio10State();
 }
 
-class _Ejercicio1State extends State<Ejercicio1> {
+class _Ejercicio10State extends State<Ejercicio10> {
   final TextEditingController _edadController = TextEditingController();
   final TextEditingController _promedioController = TextEditingController();
   String _nivelIngles = "Básico";
