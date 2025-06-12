@@ -16,18 +16,39 @@ class _Ejercicio1State extends State<Ejercicio1> {
   String _resultado = "";
 
   void convertirTemperaturas() {
-    double? celsius = double.tryParse(_celsiusController.text);
+    double? celsius = double.tryParse(_celsiusController.text.trim());
 
+    //VALIDACIÓN DE ENTRADA NO NUMÉRICA
     if (celsius == null) {
       setState(() {
-        _resultado = "Por favor, ingresa una temperatura en grados Celsius.";
+        _resultado = "Entrada inválida. Por favor, ingresa solo números.";
       });
       return;
     }
 
+    //VALIDACIÓN PARA VALOR CERO
+    if (celsius == 0) {
+      setState(() {
+        _resultado =
+            "La temperatura no puede ser 0. Por favor, ingresa un valor mayor que 0.";
+      });
+      return;
+    }
+
+    //VALIDACIÓN PARA UN VALOR NEGATIVO
+    if (celsius < 0) {
+      setState(() {
+        _resultado =
+            "La temperatura no puede ser negativa. Por favor, ingresa un valor positivo.";
+      });
+      return;
+    }
+
+    //CONVERSIÓN DE FARHRENHEIT Y KELVIN
     double fahrenheit = (celsius * 9 / 5) + 32;
     double kelvin = celsius + 273.15;
 
+    //MOSTRAR LOS RESULTADOS
     setState(() {
       _resultado =
           "Temperatura en Fahrenheit: ${fahrenheit} y la temperatura en Kelvin: ${kelvin}";
@@ -43,11 +64,15 @@ class _Ejercicio1State extends State<Ejercicio1> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Temperatura en Celsius:"),
+            Text("Temperatura en Celsius:", style: TextStyle(fontSize: 16)),
+            SizedBox(height: 8),
             TextField(
               controller: _celsiusController,
               keyboardType: TextInputType.numberWithOptions(decimal: true),
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Ejemplo: 25.5",
+              ),
             ),
             SizedBox(height: 16),
             FilledButton(
@@ -55,8 +80,11 @@ class _Ejercicio1State extends State<Ejercicio1> {
               child: Text("Convertir"),
             ),
             SizedBox(height: 16),
-            Text(_resultado, style: TextStyle(fontSize: 16)),
-            SizedBox(height: 16),
+            Text(
+              _resultado,
+              style: TextStyle(fontSize: 16, color: Colors.black87),
+            ),
+            SizedBox(height: 24),
             Row(
               children: [
                 BackButton(),
